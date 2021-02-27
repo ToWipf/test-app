@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'wipf-test',
+    loadChildren: () => import('./wipf-test/wipf-test.module').then( m => m.WipfTestPageModule)
+  },
 ];
 
 @NgModule({
