@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { WipfTestPage } from './wipf-test.page';
+import { ExploreContainerComponent } from './explore-container.component';
 
-describe('WipfTestPage', () => {
-  let component: WipfTestPage;
-  let fixture: ComponentFixture<WipfTestPage>;
+describe('ExploreContainerComponent', () => {
+  let component: ExploreContainerComponent;
+  let fixture: ComponentFixture<ExploreContainerComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ WipfTestPage ],
+      declarations: [ ExploreContainerComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(WipfTestPage);
+    fixture = TestBed.createComponent(ExploreContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

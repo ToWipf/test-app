@@ -1,5 +1,5 @@
 {
-  "name": "wipf-test",
+  "name": "wipf-app",
   "integrations": {
     "capacitor": {}
   },

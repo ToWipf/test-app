@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "wipf-test",
+  "appName": "wipf-app",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
