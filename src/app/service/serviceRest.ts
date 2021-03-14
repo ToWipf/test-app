@@ -27,10 +27,10 @@ export class ServiceRest {
     }).catch((e) => this.sAuth.host = 'http://192.168.2.11/');
     this.storage.get('username').then((val) => {
       this.sAuth.username = val;
-    }).catch((e) => this.sAuth.username = '-');
+    }).catch((e) => this.sAuth.username = '');
     this.storage.get('password').then((val) => {
       this.sAuth.password = val;
-    }).catch((e) => this.sAuth.password = '-');
+    }).catch((e) => this.sAuth.password = '');
   }
 
   public getAuth(): ServerAuth {

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Über
+      Einstellungen
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,7 +9,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Über</ion-title>
+      <ion-title size="large">Einstellungen</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -18,7 +18,7 @@
     <p>0.0.2</p>
     <strong>Online Version</strong>
     <p>{{sVersion}}</p>
-    
+
     <hr>
     <strong>Zugangsdaten</strong>
     <br>
@@ -34,7 +34,7 @@
     <br>
     <mat-form-field>
       <mat-label>Passwort</mat-label>
-      <input matInput [(ngModel)]="sAuth.password">
+      <input matInput type="password" [(ngModel)]="sAuth.password">
     </mat-form-field>
     <br>
     <button mat-button (click)="saveAndTest()">Speichern</button>

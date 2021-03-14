@@ -9,9 +9,13 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Startseite</ion-title>
+      <ion-title size="large">Infoseite</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  Start
+  <div id="container">
+    {{infotext}}
+    <br>
+    <button mat-button (click)="load()">neu Laden</button>
+  </div>
 </ion-content>
