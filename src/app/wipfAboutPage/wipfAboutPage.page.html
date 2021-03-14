@@ -14,8 +14,13 @@
   </ion-header>
 
   <div id="container">
+    <mat-form-field>
+      <mat-label>Data</mat-label>
+      <input matInput [(ngModel)]="data.data">
+    </mat-form-field>
+
     <strong>App Version</strong>
-    <p>0.1</p>
+    <p>0.0.1</p>
     <strong>Online Version</strong>
     <p>{{sVersion}}</p>
   </div>

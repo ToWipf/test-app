@@ -1,14 +1,14 @@
 {
-    "appId": "io.ionic.starter",
-    "appName": "wipf-app",
-    "bundledWebRuntime": false,
-    "npmClient": "npm",
-    "webDir": "www",
-    "plugins": {
-        "SplashScreen": {
-            "launchShowDuration": 0
-        }
-    },
-    "cordova": {},
-    "linuxAndroidStudioPath": "/home/wipf/work_app/android-studio/bin/studio.sh"
+  "appId": "io.ionic.starter",
+  "appName": "wipf-app",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {},
+  "linuxAndroidStudioPath": "/home/wipf/work_app/android-studio/bin/studio.sh"
 }
