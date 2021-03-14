@@ -14,14 +14,14 @@ export class WipfStartPage implements OnInit{
   public infotext;
 
   public ngOnInit() {
+    this.infotext = 'nicht verbunden';
     this.load();
   }
 
   public load(): void {
-    this.infotext = 'nicht verbunden';
-    this.http.get(this.rest.gethost() + 'app/starttext', this.rest.getHeaderAuth()).subscribe(
+    this.http.get(this.rest.gethost() + 'wipfapp/starttext', this.rest.getHeaderAuth()).subscribe(
       (resdata: any) => {
-        this.infotext = resdata;
+        this.infotext = resdata.data;
       },
     );
   }

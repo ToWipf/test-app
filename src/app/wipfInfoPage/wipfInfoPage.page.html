@@ -14,7 +14,7 @@
   </ion-header>
 
   <div id="container">
-    {{infotext}}
+    <div [innerHTML]="infotext"></div>
     <br>
     <button mat-button (click)="load()">neu Laden</button>
   </div>
