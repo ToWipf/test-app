@@ -21,7 +21,7 @@ export class WipfAboutPage implements OnInit {
     this.rest.sethost('http://192.168.2.11:8080/');
 
 
-    this.http.get(this.rest.gethost() + 'wipf/ver').subscribe(
+    this.http.get(this.rest.gethost() + 'wipf/ver', this.rest.getheader()).subscribe(
       (resdata: any) => {
         this.sVersion = resdata.ver.toString();
       },
