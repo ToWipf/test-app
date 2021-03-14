@@ -20,14 +20,7 @@ export class ServiceRest {
   }
 
   public getheader(): any {
-    var headers_object = new HttpHeaders();
-    headers_object.append('Content-Type', 'application/json');
-    headers_object.append('Authorization', 'Basic ' + btoa(this.username + ':' + this.password));
-
-    const httpOptions = {
-      headers: headers_object
-    };
-    return httpOptions;
+    return { headers: new HttpHeaders().set('Authorization', 'Basic ' + btoa(this.username + ':' + this.password)) };
   }
 
 }
