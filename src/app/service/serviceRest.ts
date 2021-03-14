@@ -23,14 +23,26 @@ export class ServiceRest {
 
   public loadRestParams(): void {
     this.storage.get('host').then((val) => {
-      this.sAuth.host = val;
-    }).catch((e) => this.sAuth.host = 'http://192.168.2.11/');
+      if (val) {
+        this.sAuth.host = val;
+      } else {
+        this.sAuth.host = 'http://192.168.2.11:8080/';
+      }
+    }).catch((e) => this.sAuth.host = 'fail');
     this.storage.get('username').then((val) => {
-      this.sAuth.username = val;
-    }).catch((e) => this.sAuth.username = '');
+      if (val) {
+        this.sAuth.username = val;
+      } else {
+        this.sAuth.username = '';
+      }
+    }).catch((e) => this.sAuth.host = '');
     this.storage.get('password').then((val) => {
-      this.sAuth.password = val;
-    }).catch((e) => this.sAuth.password = '');
+      if (val) {
+        this.sAuth.password = val;
+      } else {
+        this.sAuth.username = '';
+      }
+    }).catch((e) => this.sAuth.host = '');
   }
 
   public getAuth(): ServerAuth {
