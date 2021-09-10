@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ServiceRest } from '../service/serviceRest';
 
 @Component({
@@ -7,15 +7,21 @@ import { ServiceRest } from '../service/serviceRest';
   templateUrl: 'wipfStartPage.page.html',
   styleUrls: ['wipfStartPage.page.less']
 })
-export class WipfStartPage implements OnInit{
+export class WipfStartPage {
 
   constructor(private http: HttpClient, private rest: ServiceRest) { }
 
   public infotext;
+  public bLoopStop = false;
 
-  public ngOnInit() {
+  public ionViewDidLeave(): void {
+    this.bLoopStop = true;
+  }
+
+  public ionViewDidEnter() {
     this.infotext = 'nicht verbunden';
     this.load();
+    this.reloadLoop();
   }
 
   public load(): void {
@@ -24,5 +30,15 @@ export class WipfStartPage implements OnInit{
         this.infotext = resdata.data;
       },
     );
+  }
+
+  private reloadLoop(): void {
+    if (!this.bLoopStop) {
+      // get current button
+      setTimeout(() => {
+        this.reloadLoop();
+      }, 5000);
+      this.load();
+    }
   }
 }
