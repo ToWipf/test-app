@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('../wipfAboutPage/wipfAboutPage.module').then(m => m.WipfAboutPageModule)
       },
       {
+        path: 'wipfTelegramSyncPage',
+        loadChildren: () => import('../wipf-sync-telegram-page/wipf-sync-telegram-page.module').then(m => m.WipfSyncTelegramPagePageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/wipfStartPage',
         pathMatch: 'full'

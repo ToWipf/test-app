@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "wipf-app",
+  "appId": "io.github.towipf",
+  "appName": "Wipf-App",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

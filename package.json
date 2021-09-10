@@ -1,8 +1,8 @@
 {
   "name": "wipf-app",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "version": "0.0.2",
+  "author": "ToWipf",
+  "homepage": "https://towipf.github.io/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -51,5 +51,5 @@
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
   },
-  "description": "An Ionic project"
+  "description": "Wipf App by Wipf"
 }

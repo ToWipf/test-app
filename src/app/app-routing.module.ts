@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'wipf-sync-telegram-page',
+    loadChildren: () => import('./wipf-sync-telegram-page/wipf-sync-telegram-page.module').then( m => m.WipfSyncTelegramPagePageModule)
   }
 ];
 @NgModule({
