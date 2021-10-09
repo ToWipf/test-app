@@ -16,11 +16,13 @@ export class WipfPunktePagePage implements OnInit {
   public sPunkte: number;
   public nNochSpiele: number;
   public bCanPlay: boolean;
+  public sGewinntext: string;
 
   ngOnInit() {
     this.gluecksPunkte = {};
     this.gluecksPunkte.punkte = 0;
-    this.gluecksPunkte.code = '115566';
+    this.gluecksPunkte.code = '#115566';
+    this.sGewinntext = '';
     this.load();
   }
 
@@ -35,7 +37,7 @@ export class WipfPunktePagePage implements OnInit {
     this.http.get(this.rest.gethost() + 'wipfapp/getNochSpiele', this.rest.getHeaderAuth()).subscribe(
       (resdata: any) => {
         this.nNochSpiele = resdata.nochspiele.toString();
-        console.log(this.nNochSpiele);
+
         if (this.nNochSpiele > 0) {
           this.bCanPlay = true;
         } else {
@@ -46,11 +48,12 @@ export class WipfPunktePagePage implements OnInit {
   }
 
   public play() {
-    console.log(this.gluecksPunkte);
     this.http.post(this.rest.gethost() + 'wipfapp/playPunkte', this.gluecksPunkte, this.rest.getHeaderAuth()).subscribe(
       (resdata: any) => {
         // neu laden
-        this.ngOnInit();
+        this.sGewinntext = resdata.text.toString();
+        this.gluecksPunkte.punkte = 0;
+        this.load();
       },
     );
   }
