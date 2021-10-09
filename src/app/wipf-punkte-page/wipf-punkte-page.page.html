@@ -11,7 +11,8 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
+  <div id="container" *ngIf="gluecksPunkte.code">
+    <!-- Erst laden wenn var da ist -->
     <strong>Aktuelle Punkte:</strong>
     <p>{{sPunkte}}</p>
 
@@ -33,7 +34,7 @@
 
     <hr>
     <strong>Verbleibende Spiele:</strong>
-    <p>{{sNochSpiele}}</p>
+    <p>{{nNochSpiele}}</p>
     <br>
 
     <button mat-button (click)="load()">neu Laden</button>
