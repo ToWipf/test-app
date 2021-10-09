@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'wipf-sync-telegram-page',
     loadChildren: () => import('./wipf-sync-telegram-page/wipf-sync-telegram-page.module').then( m => m.WipfSyncTelegramPagePageModule)
+  },
+  {
+    path: 'wipf-punkte-page',
+    loadChildren: () => import('./wipf-punkte-page/wipf-punkte-page.module').then( m => m.WipfPunktePagePageModule)
   }
 ];
 @NgModule({
