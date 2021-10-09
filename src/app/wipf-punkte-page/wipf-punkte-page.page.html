@@ -25,10 +25,17 @@
     <br>
     <mat-form-field>
       <mat-label>Eine Glücksfrabe wählen</mat-label>
-      <input type="color" matInput [(ngModel)]="gluecksPunkte.color">
+      <input type="color" matInput [(ngModel)]="gluecksPunkte.code">
     </mat-form-field>
     <br>
+
+    <button *ngIf="(bCanPlay && gluecksPunkte.punkte)" mat-button (click)="play()">Spielen</button>
+
+    <hr>
+    <strong>Verbleibende Spiele:</strong>
+    <p>{{sNochSpiele}}</p>
     <br>
-    <button mat-button (click)="play()">Spielen</button>
+
+    <button mat-button (click)="load()">neu Laden</button>
   </div>
 </ion-content>

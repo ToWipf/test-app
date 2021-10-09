@@ -6,5 +6,5 @@ export interface ServerAuth {
 
 export interface GluecksPunkte {
   punkte?: number;
-  color?: string;
+  code?: string;
 }
