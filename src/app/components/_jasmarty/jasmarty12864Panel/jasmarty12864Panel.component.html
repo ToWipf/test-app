@@ -1,0 +1,17 @@
+<ng-container *ngIf="screen">
+    <table>
+        <div *ngFor="let xA of screen; let x = index">
+            <tr>
+                <td *ngFor="let yA of xA; let y = index" title="X:{{x}} Y:{{y}}" (click)="setBlock(x,y)" [ngClass]="{ 'on': screen[x][y] , 'off': !screen[x][y] }">
+
+                </td>
+            </tr>
+        </div>
+    </table>
+</ng-container>
+
+<button (click)="send()">Senden</button>
+
+<button (click)="load()">Laden</button>
+
+<button (click)="refreshLcdNow()">refreshLcdNow</button>

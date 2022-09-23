@@ -23,12 +23,14 @@ npm-debug.log*
 /.sourcemaps
 /.versions
 /.vscode
+/.angular/cache
 /coverage
 /dist
 /node_modules
 /platforms
 /plugins
 /www
+/android/.idea
 resources/android/icon
 resources/android/splash
 resources/ios/icon
