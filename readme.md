@@ -9,3 +9,5 @@ ionic capacitor run android -l --external
 ionic g 
 
 page
+
+chrome://inspect/#devices
