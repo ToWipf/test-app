@@ -1,5 +1,7 @@
 npm install
 
+npm run build
+
 ionic capacitor update
 
 ionic capacitor run android
