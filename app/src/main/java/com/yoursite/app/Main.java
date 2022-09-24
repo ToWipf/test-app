@@ -35,7 +35,8 @@ public class Main extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		//setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		url = "file:///android_asset/index.html";
+		//url = "file:///android_asset/index.html";
+		url = "http:///192.168.2.11:8080/index.html";
 
 		// Create reference to UI elements
 		webView = (WebView) findViewById(R.id.webview_compontent);
@@ -48,7 +49,6 @@ public class Main extends Activity {
 		});
 		webView.setLongClickable(false);
 
-		// workaround so that the default browser doesn't take over
 		webView.setWebViewClient(new WebViewClient());
 		webView.getSettings().setJavaScriptEnabled(true);
 		webView.getSettings().setDomStorageEnabled(true);
