@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">wipf-app</string>
-    <string name="title_activity_main">wipf-app</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="app_name">Wipf-App</string>
+    <string name="title_activity_main">Wipf-App</string>
+    <string name="package_name">io.github.towipf</string>
+    <string name="custom_url_scheme">io.github.towipf</string>
 </resources>
