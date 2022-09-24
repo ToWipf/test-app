@@ -1,7 +1,0 @@
-{
-  "name": "Wipf-App",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}

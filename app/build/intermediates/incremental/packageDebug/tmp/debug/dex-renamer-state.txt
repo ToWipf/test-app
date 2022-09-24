@@ -1,0 +1,7 @@
+#Sat Sep 24 11:50:49 CEST 2022
+base.1=C\:\\Users\\Wipf\\git\\Android_app\\Android-Webview-Based-App-Template-master\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
+path.1=classes.dex
+base.0=C\:\\Users\\Wipf\\git\\Android_app\\Android-Webview-Based-App-Template-master\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex
