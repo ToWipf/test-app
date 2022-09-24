@@ -8,7 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnLongClickListener;
+import android.webkit.ConsoleMessage;
 import android.webkit.CookieManager;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -53,6 +55,14 @@ public class Main extends Activity {
 		webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
 		webView.getSettings().setAllowFileAccessFromFileURLs(true);
 		webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
+
+		webView.setWebChromeClient(new WebChromeClient() {
+			@Override
+			public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+				android.util.Log.d("WebView", consoleMessage.message());
+				return true;
+			}
+		});
 
 		CookieManager.setAcceptFileSchemeCookies(true);
 
