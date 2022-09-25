@@ -1,4 +1,4 @@
-package com.yoursite.app;
+package io.github.towipf;
 
 import android.app.Activity;
 import android.content.Intent;
