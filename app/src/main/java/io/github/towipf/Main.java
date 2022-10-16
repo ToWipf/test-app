@@ -18,6 +18,8 @@ import android.webkit.WebViewClient;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import io.github.towipf.loader.R;
+
 public class Main extends Activity {
 
 	private WebView webView;
@@ -35,8 +37,8 @@ public class Main extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		//setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		//url = "file:///android_asset/index.html";
-		url = "http:///192.168.2.11:8080/index.html";
+		url = "file:///android_asset/index.html";
+		//url = "http:///192.168.2.11:8080/index.html";
 
 		// Create reference to UI elements
 		webView = (WebView) findViewById(R.id.webview_compontent);
