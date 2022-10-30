@@ -23,7 +23,7 @@ public class SaveSettings {
         }
         return sOut;
     }
-    
+
     public void write(String sData) {
         File file = new File("/data/data/com.example.jasmartyapp/settings.txt");
         try {

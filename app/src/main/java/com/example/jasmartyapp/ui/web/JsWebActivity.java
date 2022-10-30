@@ -16,29 +16,49 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.example.jasmartyapp.R;
+import com.example.jasmartyapp.SaveSettings;
+import com.example.jasmartyapp.data.model.JsSettings;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class JsWebActivity extends Activity {
 
     private WebView webView;
-    private String url;
+    private SaveSettings settings = new SaveSettings();
+    //private String url;
 
     @Override
     protected void onStop() {
-        // TODO Auto-generated method stub
         super.onStop();
-        saveCookies();
+        //saveCookies();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jsweb);
+
+
+        JsSettings jsLoad = null;
+        try {
+            jsLoad = new JsSettings(new JSONObject(settings.read()));
+        } catch (JSONException e) {
+            e.printStackTrace();
+            finish();
+        }
+        if (jsLoad.getsUrl() == null) {
+            finish();
+        }
+        this.addCookiesFromSave(jsLoad);
+
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //url = "file:///android_asset/index.html";
-        url = "http:///192.168.2.11:8080/index.html";
+        //url = "http:///192.168.2.11:8080/index.html";
 
         // Create reference to UI elements
         webView = (WebView) findViewById(R.id.webview_component);
@@ -68,18 +88,19 @@ public class JsWebActivity extends Activity {
 
         CookieManager.setAcceptFileSchemeCookies(true);
 
-        restoreCookies();
+        restoreCookies(jsLoad.getsUrl());
         if (savedInstanceState == null) {
-            webView.loadUrl(url);
+            webView.loadUrl(jsLoad.getsUrl());
         }
 
+        //saveCookies(jsLoad.getsUrl());
         /* Periodically saves cookies to variables */
-        new Timer().scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                saveCookies();
-            }
-        }, 0, 10000);
+        //new Timer().scheduleAtFixedRate(new TimerTask() {
+        //    @Override
+        //    public void run() {
+        //        saveCookies();
+        //    }
+        //}, 0, 10000);
 
     }
 
@@ -89,7 +110,7 @@ public class JsWebActivity extends Activity {
 
         // Save the state of the WebView
         webView.saveState(outState);
-        saveCookies();
+        //saveCookies();
     }
 
     @Override
@@ -117,29 +138,41 @@ public class JsWebActivity extends Activity {
     }
 
     /* method to save cookies in app memory */
-    private void saveCookies() {
-        String cookies = CookieManager.getInstance().getCookie(url);
+    private void saveCookies(String sUrl) {
+        String cookies = CookieManager.getInstance().getCookie(sUrl);
         // Saving cookies to MyPrefs
         SharedPreferences sp = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = sp.edit();
-        prefsEditor.putString("cookies", cookies);
+        prefsEditor.putString("cookies", cookies); // a=bbbb; ddddddddd=ddddd
         prefsEditor.commit();
+        //writeTMP(cookies);
+    }
+
+    public void writeTMP(String sData) {
+        File file = new File("/data/data/com.example.jasmartyapp/tnpco.txt");
+        try {
+            FileOutputStream stream = new FileOutputStream(file);
+            stream.write(sData.getBytes());
+            stream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /* restoring cookies from app memory */
-    private void restoreCookies() {
+    private void restoreCookies(String sUrl) {
         SharedPreferences sp = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String cookies = sp.getString("cookies", "");
-        CookieManager.getInstance().setCookie(url, cookies);
+        CookieManager.getInstance().setCookie(sUrl, cookies);
     }
 
     @Override
     public void onBackPressed() {
         if (webView != null && webView.canGoBack()) {
             webView.goBack();// if there is previous page open it
-            saveCookies();
+            //saveCookies();
         } else {
-            saveCookies();
+            //saveCookies();
             super.onBackPressed();//if there is no previous page, close app
         }
     }
@@ -160,5 +193,14 @@ public class JsWebActivity extends Activity {
             return true;
         }
 
+    }
+
+
+    private void addCookiesFromSave(JsSettings jss) {
+        String cookieStr = jss.getsCo1_key() + "=" + jss.getsCo1_val() + "; " + jss.getsCo2_key() + "=" + jss.getsCo2_val();
+        SharedPreferences sp = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = sp.edit();
+        prefsEditor.putString("cookies", cookieStr); // a=bbbb; ddddddddd=ddddd
+        prefsEditor.commit();
     }
 }
