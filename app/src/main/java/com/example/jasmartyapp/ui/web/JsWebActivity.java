@@ -1,8 +1,6 @@
 package com.example.jasmartyapp.ui.web;
 
 import android.app.Activity;
-import android.webkit.WebView;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,8 +14,6 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jasmartyapp.R;
 
@@ -124,7 +120,7 @@ public class JsWebActivity extends Activity {
     private void saveCookies() {
         String cookies = CookieManager.getInstance().getCookie(url);
         // Saving cookies to MyPrefs
-        SharedPreferences sp=getSharedPreferences("MyPrefs",MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = sp.edit();
         prefsEditor.putString("cookies", cookies);
         prefsEditor.commit();
@@ -132,17 +128,17 @@ public class JsWebActivity extends Activity {
 
     /* restoring cookies from app memory */
     private void restoreCookies() {
-        SharedPreferences sp=getSharedPreferences("MyPrefs",MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String cookies = sp.getString("cookies", "");
-        CookieManager.getInstance().setCookie(url,cookies);
+        CookieManager.getInstance().setCookie(url, cookies);
     }
+
     @Override
     public void onBackPressed() {
-        if(webView!= null && webView.canGoBack()) {
+        if (webView != null && webView.canGoBack()) {
             webView.goBack();// if there is previous page open it
             saveCookies();
-        }
-        else {
+        } else {
             saveCookies();
             super.onBackPressed();//if there is no previous page, close app
         }
@@ -156,7 +152,7 @@ public class JsWebActivity extends Activity {
                 url = url.trim();
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("plain/text").putExtra(Intent.EXTRA_EMAIL,
-                        new String[] { url });
+                        new String[]{url});
                 startActivity(i);
                 return true;
             }

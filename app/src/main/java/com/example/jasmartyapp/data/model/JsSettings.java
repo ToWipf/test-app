@@ -1,6 +1,5 @@
 package com.example.jasmartyapp.data.model;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,7 +22,19 @@ public class JsSettings {
         this.sCo2_val = sCo2_val;
     }
 
-    public String toMyString(){
+    public JsSettings(JSONObject o) {
+        try {
+            sUrl = o.getString("url");
+            sCo1_key = o.getString("c1k");
+            sCo1_val = o.getString("c1v");
+            sCo2_key = o.getString("c2k");
+            sCo2_val = o.getString("c2v");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public JSONObject toJson() {
         JSONObject o = new JSONObject();
         try {
             o.put("url", sUrl);
@@ -34,7 +45,7 @@ public class JsSettings {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return o.toString();
+        return o;
     }
 
     public String getsCo1_key() {
