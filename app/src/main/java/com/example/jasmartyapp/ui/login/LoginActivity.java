@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         this.loadSettings();
+
     }
 
     private void loadSettings() {

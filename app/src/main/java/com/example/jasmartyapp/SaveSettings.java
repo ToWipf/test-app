@@ -14,10 +14,8 @@ public class SaveSettings {
         String sOut = "";
         try {
             BufferedReader br = new BufferedReader(new FileReader("/data/data/com.example.jasmartyapp/settings.txt"));
-
             sOut = br.readLine();
             br.close();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -34,5 +32,4 @@ public class SaveSettings {
             e.printStackTrace();
         }
     }
-
 }

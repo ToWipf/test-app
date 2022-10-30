@@ -1,7 +1,6 @@
 package com.example.jasmartyapp.ui.web;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,10 +21,6 @@ import com.example.jasmartyapp.data.model.JsSettings;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 public class JsWebActivity extends Activity {
 
     private WebView webView;
@@ -43,7 +38,6 @@ public class JsWebActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jsweb);
 
-
         JsSettings jsLoad = null;
         try {
             jsLoad = new JsSettings(new JSONObject(settings.read()));
@@ -54,7 +48,6 @@ public class JsWebActivity extends Activity {
         if (jsLoad.getsUrl() == null) {
             finish();
         }
-        this.addCookiesFromSave(jsLoad);
 
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //url = "file:///android_asset/index.html";
@@ -88,8 +81,9 @@ public class JsWebActivity extends Activity {
 
         CookieManager.setAcceptFileSchemeCookies(true);
 
-        restoreCookies(jsLoad.getsUrl());
+        //restoreCookies(jsLoad.getsUrl());
         if (savedInstanceState == null) {
+            this.addCookiesFromSave(jsLoad);
             webView.loadUrl(jsLoad.getsUrl());
         }
 
@@ -145,18 +139,6 @@ public class JsWebActivity extends Activity {
         SharedPreferences.Editor prefsEditor = sp.edit();
         prefsEditor.putString("cookies", cookies); // a=bbbb; ddddddddd=ddddd
         prefsEditor.commit();
-        //writeTMP(cookies);
-    }
-
-    public void writeTMP(String sData) {
-        File file = new File("/data/data/com.example.jasmartyapp/tnpco.txt");
-        try {
-            FileOutputStream stream = new FileOutputStream(file);
-            stream.write(sData.getBytes());
-            stream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /* restoring cookies from app memory */
@@ -177,30 +159,13 @@ public class JsWebActivity extends Activity {
         }
     }
 
-    private class MyWebViewClient extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (url.startsWith("mailto:")) {
-                url = url.replaceFirst("mailto:", "");
-                url = url.trim();
-                Intent i = new Intent(Intent.ACTION_SEND);
-                i.setType("plain/text").putExtra(Intent.EXTRA_EMAIL,
-                        new String[]{url});
-                startActivity(i);
-                return true;
-            }
-            view.loadUrl(url);
-            return true;
-        }
-
-    }
-
-
     private void addCookiesFromSave(JsSettings jss) {
-        String cookieStr = jss.getsCo1_key() + "=" + jss.getsCo1_val() + "; " + jss.getsCo2_key() + "=" + jss.getsCo2_val();
-        SharedPreferences sp = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor prefsEditor = sp.edit();
-        prefsEditor.putString("cookies", cookieStr); // a=bbbb; ddddddddd=ddddd
-        prefsEditor.commit();
+        //String cookiesStr = jss.getsCo1_key() + "=" + jss.getsCo1_val() + "; " + jss.getsCo2_key() + "=" + jss.getsCo2_val() + " ;testetest=jaja";
+        //SharedPreferences sp = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        //SharedPreferences.Editor prefsEditor = sp.edit();
+        //prefsEditor.putString("cookies", cookieStr); // a=bbbb; ddddddddd=ddddd
+        //prefsEditor.commit();
+        CookieManager.getInstance().setCookie(jss.getsUrl(), jss.getsCo1_key() + "=" + jss.getsCo1_val() + "; ");
+        CookieManager.getInstance().setCookie(jss.getsUrl(), jss.getsCo2_key() + "=" + jss.getsCo2_val() + "; ");
     }
 }

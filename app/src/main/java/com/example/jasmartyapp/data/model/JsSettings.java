@@ -49,22 +49,22 @@ public class JsSettings {
     }
 
     public String getsCo1_key() {
-        return sCo1_key;
+        return sCo1_key.trim();
     }
 
     public String getsUrl() {
-        return sUrl;
+        return sUrl.trim();
     }
 
     public String getsCo1_val() {
-        return sCo1_val;
+        return sCo1_val.trim();
     }
 
     public String getsCo2_key() {
-        return sCo2_key;
+        return sCo2_key.trim();
     }
 
     public String getsCo2_val() {
-        return sCo2_val;
+        return sCo2_val.trim();
     }
 }
