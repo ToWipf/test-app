@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">Wipf Loader</string>
     <string name="action_settings">Settings</string>
+    <string name="wipfbutton">WipfButton</string>
+    <string name="textUrl">Url</string>
 </resources>
