@@ -1,15 +1,19 @@
 package com.example.jasmartyapp.data.model;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
  */
 public class JsSettings {
 
-    private final String sUrl;
-    private final String sCo1_key;
-    private final String sCo1_val;
-    private final String sCo2_key;
-    private final String sCo2_val;
+    private String sUrl;
+    private String sCo1_key;
+    private String sCo1_val;
+    private String sCo2_key;
+    private String sCo2_val;
 
     public JsSettings(String sUrl, String sCo1_key, String sCo1_val, String sCo2_key, String sCo2_val) {
         this.sUrl = sUrl;
@@ -20,7 +24,17 @@ public class JsSettings {
     }
 
     public String toMyString(){
-        return sUrl.toString();
+        JSONObject o = new JSONObject();
+        try {
+            o.put("url", sUrl);
+            o.put("c1k", sCo1_key);
+            o.put("c1v", sCo1_val);
+            o.put("c2k", sCo2_key);
+            o.put("c2v", sCo2_val);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return o.toString();
     }
 
     public String getsCo1_key() {

@@ -28,27 +28,23 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        final EditText jsUrl = binding.jsUrl;
-        final EditText co1_key = binding.cookie1Key;
-        final EditText co1_val = binding.cookie1Val;
-        final EditText co2_key = binding.cookie2Key;
-        final EditText co2_val = binding.cookie2Val;
         final Button loginButton = binding.saveSettings;
         final ProgressBar loadingProgressBar = binding.loading;
-
-        JsSettings jss = new JsSettings(jsUrl.toString(), co1_key.toString(), co1_val.toString(), co2_key.toString(), co2_val.toString());
-
-        Editable aa = jsUrl.getText();
 
          loginButton.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
+                 JsSettings jss = new JsSettings(
+                         binding.jsUrl.getText().toString(),
+                         binding.cookie1Key.getText().toString(),
+                         binding.cookie1Val.getText().toString(),
+                         binding.cookie2Key.getText().toString(),
+                         binding.cookie2Val.getText().toString()
+                 );
+
                  loadingProgressBar.setVisibility(View.VISIBLE);
-                 //TODO hier jss speichern
                  SaveSettings s = new SaveSettings();
-
-                 s.write(jss.toMyString() + "_AAA\nAAA_" + binding.jsUrl.toString() + "_AAA\nAAA_" + binding.jsUrl + "_AAA\nAAA_" + aa + "_AAA\nAAA_" + aa.toString());
-
+                 s.write(jss.toMyString());
              }
          });
     }
