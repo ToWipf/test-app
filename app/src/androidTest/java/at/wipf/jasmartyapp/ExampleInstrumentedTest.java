@@ -1,4 +1,4 @@
-package com.example.jasmartyapp;
+package at.wipf.jasmartyapp;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.jasmartyapp", appContext.getPackageName());
+        assertEquals("at.wipf.jasmartyapp", appContext.getPackageName());
     }
 }

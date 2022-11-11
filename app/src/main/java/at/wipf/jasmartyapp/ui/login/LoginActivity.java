@@ -1,4 +1,4 @@
-package com.example.jasmartyapp.ui.login;
+package at.wipf.jasmartyapp.ui.login;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,16 +7,17 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.jasmartyapp.SaveSettings;
-import com.example.jasmartyapp.data.model.JsSettings;
-import com.example.jasmartyapp.databinding.ActivityLoginBinding;
+import at.wipf.jasmartyapp.databinding.ActivityLoginBinding;
 
 import org.json.JSONObject;
+
+import at.wipf.jasmartyapp.SaveSettings;
+import at.wipf.jasmartyapp.data.model.JsSettings;
 
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
-    private SaveSettings settings = new SaveSettings();
+    private final SaveSettings settings = new SaveSettings();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package com.example.jasmartyapp.ui.web;
+package at.wipf.jasmartyapp.ui.web;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -14,17 +14,18 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.example.jasmartyapp.R;
-import com.example.jasmartyapp.SaveSettings;
-import com.example.jasmartyapp.data.model.JsSettings;
+import at.wipf.jasmartyapp.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import at.wipf.jasmartyapp.SaveSettings;
+import at.wipf.jasmartyapp.data.model.JsSettings;
+
 public class JsWebActivity extends Activity {
 
     private WebView webView;
-    private SaveSettings settings = new SaveSettings();
+    private final SaveSettings settings = new SaveSettings();
     //private String url;
 
     @Override

@@ -9,7 +9,7 @@
     android:paddingTop="0dp"
     android:paddingRight="0dp"
     android:paddingBottom="0dp"
-    tools:context=".ui.web.JsWebActivity">
+    tools:context="at.wipf.jasmartyapp.ui.web.JsWebActivity">
 
     <WebView
         android:id="@+id/webview_component"

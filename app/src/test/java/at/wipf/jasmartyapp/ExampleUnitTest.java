@@ -1,4 +1,4 @@
-package com.example.jasmartyapp;
+package at.wipf.jasmartyapp;
 
 import org.junit.Test;
 

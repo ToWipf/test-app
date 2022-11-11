@@ -8,14 +8,14 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher_background"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/Theme.JasmartyApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name="at.wipf.jasmartyapp.ui.login.LoginActivity"
             android:exported="true"
             android:label="Jasmarty Einstellungen">
             <intent-filter>
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.web.JsWebActivity"
+            android:name="at.wipf.jasmartyapp.ui.web.JsWebActivity"
             android:exported="true"
             android:label="Jasmarty App">
             <intent-filter>

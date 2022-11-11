@@ -1,4 +1,4 @@
-package com.example.jasmartyapp.data.model;
+package at.wipf.jasmartyapp.data.model;
 
 import org.json.JSONException;
 import org.json.JSONObject;

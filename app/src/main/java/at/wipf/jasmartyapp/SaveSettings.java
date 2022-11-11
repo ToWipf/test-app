@@ -1,4 +1,4 @@
-package com.example.jasmartyapp;
+package at.wipf.jasmartyapp;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,7 +13,7 @@ public class SaveSettings {
     public String read() {
         String sOut = "";
         try {
-            BufferedReader br = new BufferedReader(new FileReader("/data/data/com.example.jasmartyapp/settings.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("/data/data/at.wipf.jasmartyapp/settings.txt"));
             sOut = br.readLine();
             br.close();
         } catch (Exception e) {
@@ -23,7 +23,7 @@ public class SaveSettings {
     }
 
     public void write(String sData) {
-        File file = new File("/data/data/com.example.jasmartyapp/settings.txt");
+        File file = new File("/data/data/at.wipf.jasmartyapp/settings.txt");
         try {
             FileOutputStream stream = new FileOutputStream(file);
             stream.write(sData.getBytes());
