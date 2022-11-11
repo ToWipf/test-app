@@ -1,5 +1,6 @@
 package at.wipf.jasmartyapp.ui.login;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,15 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import at.wipf.jasmartyapp.databinding.ActivityLoginBinding;
 
-import org.json.JSONObject;
-
-import at.wipf.jasmartyapp.SaveSettings;
-import at.wipf.jasmartyapp.data.model.JsSettings;
-
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
-    private final SaveSettings settings = new SaveSettings();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,34 +27,32 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JsSettings jss = new JsSettings(
-                        binding.jsUrl.getText().toString(),
-                        binding.cookie1Key.getText().toString(),
-                        binding.cookie1Val.getText().toString(),
-                        binding.cookie2Key.getText().toString(),
-                        binding.cookie2Val.getText().toString()
-                );
-
-                //loadingProgressBar.setVisibility(View.VISIBLE);
-
-                settings.write(jss.toJson().toString());
+                SharedPreferences sp = getSharedPreferences("jss", MODE_PRIVATE);
+                sp.edit()
+                        .putString("jsUrl", binding.jsUrl.getText().toString())
+                        .putString("cookie1Key", binding.cookie1Key.getText().toString())
+                        .putString("cookie1Val", binding.cookie1Val.getText().toString())
+                        .putString("cookie2Key", binding.cookie2Key.getText().toString())
+                        .putString("cookie2Val", binding.cookie2Val.getText().toString())
+                        .commit();
+              //  Log.d("MyApp","I am here");
             }
         });
         this.loadSettings();
 
     }
 
+    @Override
+    public void onBackPressed() {
+            super.onBackPressed(); // close app
+    }
+
     private void loadSettings() {
-        try {
-            JsSettings jsLoad = new JsSettings(new JSONObject(settings.read()));
-            binding.jsUrl.setText(jsLoad.getsUrl());
-            binding.cookie1Key.setText(jsLoad.getsCo1_key());
-            binding.cookie1Val.setText(jsLoad.getsCo1_val());
-            binding.cookie2Key.setText(jsLoad.getsCo2_key());
-            binding.cookie2Val.setText(jsLoad.getsCo2_val());
-        } catch (Exception e) {
-            // Keine Config vorhanden
-            e.printStackTrace();
-        }
+            SharedPreferences sp = getSharedPreferences("jss", MODE_PRIVATE);
+            binding.jsUrl.setText(sp.getString("jsUrl", null));
+            binding.cookie1Key.setText(sp.getString("cookie1Key", null));
+            binding.cookie1Val.setText(sp.getString("cookie1Val", null));
+            binding.cookie2Key.setText(sp.getString("cookie2Key", null));
+            binding.cookie2Val.setText(sp.getString("cookie2Val", null));
     }
 }
